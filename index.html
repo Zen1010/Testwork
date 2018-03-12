@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+      <html>
+            <head>
+                  <meta charset="UTF-8">
+                  <title>Search Engine</title>
+                  <style>
+                        header {
+                              width: auto;
+                              background-color: #00796B; 
+                              padding: 24px;   margin: 0;
+                              text-align: center;
+                              color: #fff;
+                              font-size: 24px;
+                            }
+                        .container{
+                              max-width: 450px;
+                              height: auto;
+                              padding: 30px;
+                              min-height: 300px; 
+                              margin: 0 auto;
+                              text-align: center
+                        }
+                        button{
+                              display: inline-block;
+                              width: 80px;
+                              padding: 2px;color: #fff;
+                              text-decoration: none;
+                              background-color: #4DB6AC;text-align: center;position: relative;
+                              margin: 5px;
+                              border: none;
+                        }
+                        button:before, button:after{
+                              content: '';
+                              position: absolute;
+                              width: 0px;height: 3px;background-color: inherit;transition: .5s;
+                        }
+                        button:before{
+                              left: 0; top: -5px;
+                        }
+                        button:after{
+                              right: 0; bottom: -5px;
+                        }
+                        button:hover:before, button:hover:after{
+                              width: 100%;    
+                        }
+                        ul{
+                              padding: 0;
+                              margin: 10px 0;
+                              text-align: left;
+                              list-style: none;	
+                        }
+                        li{
+                              width: 65%;
+                              margin: 0 auto;
+                              padding: 10px 10px 10px 40px;
+                              font-size: 16px;
+                              position: relative;
+                        }
+                        p{
+                              color: red;
+                              padding: 0px;
+                              margin: 0px;
+                        }
+                        products.name{
+                              font-size: 20px;
+                        }
+                  </style>
+            </head>
+            <body>
+                  <header>Search Engine Product</header>
+                  <div class="container">
+                        <div>
+                              <input type="search" id="input" autofocus>
+                              <button id="btn" value="Search">Search</button>
+                        </div>
+                        <div>
+                              <ul id="todo-list">      
+                              </ul>     
+                        </div>
+                  </div>
+                  <script>
+                        var input = document.getElementById("input");
+                        var btn = document.getElementById("btn");
+                        var toDoList = document.getElementById("todo-list");
+                        var x=1;
+                        var products = [
+                              {
+                                name : "iphone",
+                                price : 1200,
+                                available : "Product is available"
+                              },                        
+                              {
+                                name : "mac",
+                                price : 1000,
+                                available : "Sorry This Product is not available"
+                              },
+                              { name : "asus",
+                                price : 1500,
+                                available : "Product is available" 
+                              }
+                          ];
+                        btn.addEventListener("click",function(){
+                              toDoList.innerHTML= "";console.log(x);
+                              for(var i=0;i<products.length; i++){
+                                    for(var key in products[i]){
+                                          if(input.value===products[i].name){
+                                                toDoList.innerHTML  += "<li>"+ products[i][key] +"</li>";
+                                                x=0;
+                                          }
+                                    }
+                              }
+                              if(x===1){toDoList.innerHTML  += "<li><p>There is no such product</p></li>";}
+                              input.value = "";
+                              x=1;
+                        });
+                  </script>
+            </body>
+      </html>
+      
